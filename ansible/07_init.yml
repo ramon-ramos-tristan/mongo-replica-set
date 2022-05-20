@@ -1,0 +1,20 @@
+- hosts: node1
+  become: true
+  become_user: root
+  gather_facts: True
+
+  tasks:
+    - name: Install pip
+      apt:
+        name: python3-pip
+
+    - name: Install pymongo
+      command: pip install pymongo
+
+    - name: Copiar el archivo de configuración Core-Site.XML
+      community.mongodb.mongodb_replicaset:
+        replica_set: "rs0"
+        members:
+           - host: node1-8aa1d34
+           - host: node2-7814840
+           - host: node3-e787419
