@@ -11,7 +11,7 @@
     - name: Install pymongo
       command: pip install pymongo
 
-    - name: Copiar el archivo de configuración Core-Site.XML
+    - name: Iniciar replica
       community.mongodb.mongodb_replicaset:
         replica_set: "rs0"
         members:
